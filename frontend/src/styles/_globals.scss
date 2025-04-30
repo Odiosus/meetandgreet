@@ -1,0 +1,85 @@
+body {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-blue-90);
+  background-color: var(--color-white-10);
+}
+
+h1, .h1,
+h3, .h3 {
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+h2, .h2,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-weight: 500;
+  color: var(--color-blue-90);
+  text-transform: uppercase;
+}
+
+h1, .h1 {
+  font-size: 62px;
+  text-align: center;
+}
+
+h2, .h2 {
+  font-size: 54px;
+  line-height: 1.3;
+}
+
+h3, .h3 {
+  font-size: 40px;
+}
+
+h4, .h4 {
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+h5, .h5 {
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+h6, .h6 {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+/*акцентные слова в заголовках*/
+.italic-style {
+  font-family: var(--font-family-accent);
+  font-weight: 400;
+  font-style: italic;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: inherit;
+
+  //так отключим подчеркивание только тем ссылкам, у которых задан атрибут class
+  &[class] {
+    text-decoration: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px dashed var(--color-beige);
+  outline-offset: 4px;
+  transition-duration: 0s !important;
+}
