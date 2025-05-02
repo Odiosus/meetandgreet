@@ -1,9 +1,12 @@
 import Header from './components/Header/Header.jsx';
-import './App.scss';
+import HeroSection from "./components/HeroSection/HeroSection.jsx";
 
 function App () {
   return (
-    <Header/>
+    <>
+      <Header/>
+      <HeroSection/>
+    </>
   );
 }
 
