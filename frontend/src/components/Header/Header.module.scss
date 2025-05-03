@@ -1,3 +1,13 @@
 .header {
+  margin-top: 40px;
+  margin-left: 320px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 
+  &__body {
+
+  }
 }
