@@ -43,7 +43,7 @@ export default function Header () {
                           height={40}
                         />
                       </span>
-                      <span>
+                      <span className={styles.header__menu_text}>
                         Fast Booking
                       </span>
                     </button>

@@ -10,6 +10,7 @@
   &__body {
     display: flex;
     align-items: center;
+
   }
 
   &__overlay {
@@ -36,12 +37,21 @@
       align-items: center;
       border: none;
       background-color: transparent;
+      color: var(--color-white);
     }
 
     &_image {
       background: var(--color-dark-gray);
       border-radius: 60px;
       padding: 8px 14px;
+    }
+
+    &_text {
+      margin-left: 10px;
+      text-align: right;
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.25;
     }
   }
 }
