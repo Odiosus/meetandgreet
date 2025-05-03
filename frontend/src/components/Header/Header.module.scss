@@ -8,6 +8,40 @@
   z-index: 1;
 
   &__body {
+    display: flex;
+    align-items: center;
+  }
 
+  &__overlay {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu {
+    margin-left: 48px;
+
+    &_list {
+      list-style: none;
+    }
+
+    &_item {
+    }
+
+    &_link {
+      text-decoration: none;
+    }
+
+    &_button {
+      display: flex;
+      align-items: center;
+      border: none;
+      background-color: transparent;
+    }
+
+    &_image {
+      background: var(--color-dark-gray);
+      border-radius: 60px;
+      padding: 8px 14px;
+    }
   }
 }

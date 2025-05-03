@@ -1,5 +1,6 @@
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
+import btnFastBooking from '../../assets/btn_airplane.svg';
 
 
 export default function Header () {
@@ -20,6 +21,42 @@ export default function Header () {
               height={35}
             />
           </a>
+          <div className={styles.header__overlay}>
+            <nav className={styles.header__menu}>
+              <ul className={styles.header__menu_list}>
+                <li className={styles.header__menu_item}>
+                  <a
+                    className={styles.header__menu_link}
+                    href={'#'}
+                    rel="noopener noreferrer"
+                    target={'_blank'}
+                  >
+                    <button
+                      className={styles.header__menu_button}
+                      type={'button'}>
+                      <span>
+                        <img
+                          className={styles.header__menu_image}
+                          src={btnFastBooking}
+                          alt=""
+                          width={52}
+                          height={40}
+                        />
+                      </span>
+                      <span>
+                        Fast Booking
+                      </span>
+                    </button>
+                  </a>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </nav>
+
+          </div>
         </div>
       </header>
     </>
