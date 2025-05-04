@@ -1,7 +1,9 @@
 .header {
   margin-top: 40px;
-  margin-left: 320px;
-  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1280px;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
