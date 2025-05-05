@@ -26,29 +26,18 @@ export default function Header () {
             <nav className={styles.header__menu}>
               <ul className={styles.header__menu_list}>
                 <li className={styles.header__menu_item}>
-                  <a
-                    className={styles.header__menu_link}
-                    href={'#'}
-                    rel="noopener noreferrer"
-                    target={'_blank'}
-                  >
-                    <button
-                      className={styles.header__menu_button}
-                      type={'button'}>
-                      <span>
-                        <img
-                          className={styles.header__menu_image}
-                          src={btnFastBooking}
-                          alt=""
-                          width={52}
-                          height={40}
-                        />
-                      </span>
-                      <span className={styles.header__menu_text}>
-                        Fast Booking
-                      </span>
-                    </button>
-                  </a>
+                  <Button
+                    to={'/fast-booking'}
+                    text={'Fast Booking'}
+                    icon={
+                      <img
+                        src={btnFastBooking}
+                        alt=""
+                        width={24}
+                        height={24}
+                      />}
+                    noBackground={true}
+                  />
                 </li>
                 <li className={styles.header__menu_item}>
                   <Button
