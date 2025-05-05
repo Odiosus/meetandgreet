@@ -1,8 +1,9 @@
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
-import btnFastBooking from '../../assets/btn_airplane.svg';
 import Button from "../Buttons/Button.jsx";
-
+import btnFastBooking from '../../assets/btn_airplane.svg';
+import Phone from '../../assets/phone.svg';
+import Person from '../../assets/person.svg';
 
 export default function Header () {
   return (
@@ -51,8 +52,42 @@ export default function Header () {
                     text={'Travelers +'}
                   />
                 </li>
-                <li></li>
-                <li></li>
+                <li>
+                  <Button
+                    text={'Ru'}
+                    noBackground={true}
+                  />
+                </li>
+                <li>
+                  <Button
+                    text={'En'}
+                    noBackground={true}
+                  />
+                </li>
+                <li>
+                  <Button
+                    icon={
+                      <img
+                        src={Phone}
+                        alt=""
+                        width={24}
+                        height={24}
+                      />}
+                    noBackground={true}
+                  />
+                </li>
+                <li>
+                  <Button
+                    icon={
+                      <img
+                        src={Person}
+                        alt=""
+                        width={24}
+                        height={24}
+                      />}
+                    noBackground={true}
+                  />
+                </li>
               </ul>
             </nav>
 
