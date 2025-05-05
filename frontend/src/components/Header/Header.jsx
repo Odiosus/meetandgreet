@@ -1,6 +1,7 @@
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
 import btnFastBooking from '../../assets/btn_airplane.svg';
+import Button from "../Buttons/Button.jsx";
 
 
 export default function Header () {
@@ -49,8 +50,18 @@ export default function Header () {
                     </button>
                   </a>
                 </li>
-                <li></li>
-                <li></li>
+                <li className={styles.header__menu_item}>
+                  <Button
+                    to={'/services'}
+                    text={'Services +'}
+                  />
+                </li>
+                <li className={styles.header__menu_item}>
+                  <Button
+                    to={'/travelers'}
+                    text={'Travelers +'}
+                  />
+                </li>
                 <li></li>
                 <li></li>
               </ul>
