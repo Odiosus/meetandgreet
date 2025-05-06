@@ -18,7 +18,7 @@ export default function Header () {
           >
             <img
               src={logo}
-              alt=""
+              alt="Meet and greet"
               width={171}
               height={35}
             />
@@ -52,6 +52,8 @@ export default function Header () {
                     text={'Travelers +'}
                   />
                 </li>
+              </ul>
+              <ul className={styles.header__menu_actions}>
                 <li>
                   <Button
                     text={'Ru'}
@@ -74,6 +76,7 @@ export default function Header () {
                         height={24}
                       />}
                     noBackground={true}
+                    aria-label={'Contact Us'}
                   />
                 </li>
                 <li>
@@ -86,6 +89,7 @@ export default function Header () {
                         height={24}
                       />}
                     noBackground={true}
+                    aria-label={'User Profile'}
                   />
                 </li>
               </ul>
