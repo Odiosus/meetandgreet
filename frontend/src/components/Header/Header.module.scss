@@ -1,22 +1,22 @@
 .header {
   margin-top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
+  background: transparent;
 
   &__body {
     display: flex;
     align-items: center;
-
+    background: transparent;
   }
 
   &__overlay {
     display: flex;
     align-items: center;
+    background: transparent;
   }
 
   &__menu {
