@@ -126,7 +126,7 @@ export default function Header () {
                   <Button
                     onClick={toggleMenu}
                     icon={
-                      <span className={styles.hamburgerIcon}>
+                      <span className={styles.header__menu_hamburger_icon}>
                       {isMenuOpen ? '✕' : '☰'}
                       </span>
                     }
