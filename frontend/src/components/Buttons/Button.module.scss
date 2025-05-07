@@ -38,14 +38,6 @@
   align-items: center;
   justify-content: center;
 
-  @include laptop {
-    padding: 2px 6px;
-  }
-
-  @include mobile {
-    padding: 1px 4px;
-  }
-
   img {
     display: block;
     width: 24px;

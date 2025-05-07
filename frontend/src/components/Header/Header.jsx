@@ -1,6 +1,7 @@
+import Button from "../Buttons/Button.jsx";
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
-import Button from "../Buttons/Button.jsx";
+import logoMobile from '../../images/logoMobile.svg';
 import btnFastBooking from '../../assets/btn_airplane.svg';
 import Phone from '../../assets/phone.svg';
 import Person from '../../assets/person.svg';
@@ -26,11 +27,18 @@ export default function Header () {
             title={'Home'}
           >
             <img
-              className={styles.header__logo}
+              className={styles.header__logo_desctop}
               src={logo}
               alt="Meet and greet"
               width={171}
               height={35}
+            />
+            <img
+              className={styles.header__logo_mobile}
+              src={logoMobile}
+              alt="Meet and greet"
+              width={46}
+              height={50}
             />
           </a>
           <div className={styles.header__overlay}>
