@@ -5,9 +5,15 @@ import btnFastBooking from '../../assets/btn_airplane.svg';
 import Phone from '../../assets/phone.svg';
 import Person from '../../assets/person.svg';
 import { useLanguage } from "../../context/LanguageContext.jsx";
+import { useState } from "react";
 
 export default function Header () {
   const {language, changeLanguage} = useLanguage()
+  const [isMenuOpen, setIsMenuOpen] = useState( false )
+
+  const toggleMenu = () => {
+    setIsMenuOpen( !isMenuOpen )
+  }
 
   return (
     <>
@@ -28,7 +34,7 @@ export default function Header () {
           </a>
           <div className={styles.header__overlay}>
             <nav className={styles.header__menu}>
-              <ul className={styles.header__menu_list}>
+              <ul className={`${styles.header__menu_list} ${isMenuOpen ? styles.open : ''}`}>
                 <li className={styles.header__menu_item}>
                   <Button
                     to={'/fast-booking'}
@@ -81,7 +87,7 @@ export default function Header () {
                     }`}
                   />
                 </li>
-                <li>
+                <li className={styles.header__menu_action_hidden}>
                   <Button
                     icon={
                       <img
@@ -94,7 +100,7 @@ export default function Header () {
                     aria-label={'Contact Us'}
                   />
                 </li>
-                <li>
+                <li className={styles.header__menu_action_hidden}>
                   <Button
                     icon={
                       <img
@@ -105,6 +111,18 @@ export default function Header () {
                       />}
                     noBackground={true}
                     aria-label={'User Profile'}
+                  />
+                </li>
+                <li className={styles.header__menu_hamburger}>
+                  <Button
+                    onClick={toggleMenu}
+                    icon={
+                      <span className={styles.hamburgerIcon}>
+                      {isMenuOpen ? '✕' : '☰'}
+                      </span>
+                    }
+                    noBackground={true}
+                    aria-label={'Menu'}
                   />
                 </li>
               </ul>
