@@ -1,3 +1,5 @@
+@use '../../styles' as *;
+
 .header {
   margin-top: 40px;
   position: sticky;
@@ -10,6 +12,10 @@
   &__body {
     display: flex;
     align-items: center;
+
+    @include laptop {
+      padding: 0 20px;
+    }
   }
 
   &__overlay {
@@ -23,12 +29,25 @@
     align-items: center;
     gap: 170px;
 
+    @include laptop {
+      margin-left: 30px;
+      gap: 50px;
+    }
+
     &_list {
       display: flex;
       align-items: center;
       /*TODO gap между кнопками*/
       gap: 32px;
       list-style: none;
+
+      @include laptop {
+        gap: 20px;
+      }
+
+      &.open {
+        display: flex;
+      }
     }
 
     &_actions {
@@ -37,14 +56,34 @@
       align-items: center;
       list-style: none;
 
+      @include laptop {
+        gap: 8px;
+      }
+
       li:nth-child(2) {
         margin-right: 50px;
+
+        @include laptop {
+          margin-right: 30px;
+        }
       }
+    }
+
+    &_action_hidden {
+      display: block;
+    }
+
+    &_hamburger {
+      display: none;
     }
 
     &_item {
       &:first-child {
         margin-right: 170px;
+
+        @include laptop {
+          margin-right: 30px;
+        }
       }
     }
 
@@ -58,12 +97,21 @@
       font-size: 17px;
       font-weight: 500;
       line-height: 1.25;
+
+      @include laptop {
+        font-size: 16px;
+      }
     }
   }
 
   .languageButton {
     padding: 0;
     margin: 5px;
+
+    @include laptop {
+      font-size: 16px;
+      margin: 4px;
+    }
 
     &.active {
       position: relative;
@@ -79,7 +127,10 @@
       }
     }
 
+    .hamburgerButton {
+      font-size: 24px;
+    }
   }
-
-
 }
+
+
