@@ -4,8 +4,11 @@ import Button from "../Buttons/Button.jsx";
 import btnFastBooking from '../../assets/btn_airplane.svg';
 import Phone from '../../assets/phone.svg';
 import Person from '../../assets/person.svg';
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function Header () {
+  const {language, changeLanguage} = useLanguage()
+
   return (
     <>
       <header className={styles.header}>
@@ -58,12 +61,24 @@ export default function Header () {
                   <Button
                     text={'Ru'}
                     noBackground={true}
+                    onClick={() => changeLanguage( 'ru' )}
+                    className={`${styles.languageButton} ${
+                      language === "ru"
+                        ? styles.active
+                        : ""
+                    }`}
                   />
                 </li>
                 <li>
                   <Button
                     text={'En'}
                     noBackground={true}
+                    onClick={() => changeLanguage( 'en' )}
+                    className={`${styles.languageButton} ${
+                      language === "en"
+                        ? styles.active
+                        : ""
+                    }`}
                   />
                 </li>
                 <li>
