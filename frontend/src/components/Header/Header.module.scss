@@ -30,8 +30,8 @@
     gap: 170px;
 
     @include laptop {
-      margin-left: 30px;
-      gap: 50px;
+      margin-left: 25px;
+      gap: 30px;
     }
 
     &_list {
@@ -56,16 +56,16 @@
       align-items: center;
       list-style: none;
 
-      @include laptop {
-        gap: 8px;
-      }
-
       li:nth-child(2) {
         margin-right: 50px;
 
         @include laptop {
           margin-right: 30px;
         }
+      }
+
+      li:nth-child(3) {
+        padding: 0;
       }
     }
 

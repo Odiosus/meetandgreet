@@ -1,5 +1,7 @@
+@use '../../styles' as *;
+
 .button {
-  padding: 8px 17px;
+  padding: 8px 12px;
   gap: 8px;
   display: flex;
   align-items: center;
@@ -12,6 +14,11 @@
   font-weight: 500;
   line-height: 1.25;
   text-decoration: none;
+
+  @include laptop {
+    padding: 5px 9px;
+    font-size: 16px;
+  }
 }
 
 .button-no-background {
@@ -26,9 +33,18 @@
   align-items: center;
   justify-content: center;
 
+  @include laptop {
+    padding: 2px 6px;
+  }
+
   img {
     display: block;
     width: 24px;
     height: 24px;
+
+    @include laptop {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
