@@ -36,6 +36,10 @@
       gap: 1px; // Меньшее расстояние между языками и иконками
       align-items: center;
       list-style: none;
+
+      li:nth-child(2) {
+        margin-right: 50px;
+      }
     }
 
     &_item {
