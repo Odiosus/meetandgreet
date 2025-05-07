@@ -13,6 +13,23 @@
     margin-top: 36px;
   }
 
+  &__logo {
+    width: 171px;
+    height: 35px;
+
+    @include laptop {
+      width: 150px;
+    }
+
+    @include tablet {
+      width: 130px;
+    }
+
+    @include mobile {
+      width: 110px;
+    }
+  }
+
   &__body {
     display: flex;
     align-items: center;
@@ -25,6 +42,10 @@
       width: 100%;
       padding: 0 15px;
       justify-content: space-between;
+    }
+
+    @include mobile {
+      padding: 0 10px;
     }
   }
 
@@ -77,6 +98,13 @@
           border-radius: 10px;
           gap: 10px;
         }
+
+        @include mobile {
+          top: 50px;
+          right: 10px;
+          padding: 8px;
+          gap: 8px;
+        }
       }
     }
 
@@ -90,6 +118,10 @@
         gap: 5px;
       }
 
+      @include mobile {
+        gap: 3px;
+      }
+
       li:nth-child(2) {
         margin-right: 50px;
 
@@ -99,6 +131,10 @@
 
         @include tablet {
           margin-right: 10px;
+        }
+
+        @include mobile {
+          margin-right: 8px;
         }
       }
 
@@ -147,6 +183,10 @@
       @include laptop {
         font-size: 16px;
       }
+
+      @include mobile {
+        font-size: 15px;
+      }
     }
   }
 
@@ -161,6 +201,11 @@
 
     @include tablet {
       margin: 3px;
+    }
+
+    @include mobile {
+      margin: 2px;
+      font-size: 15px;
     }
 
     &.active {
@@ -179,6 +224,10 @@
 
     .hamburgerButton {
       font-size: 24px;
+
+      @include mobile {
+        font-size: 20px;
+      }
     }
   }
 }
