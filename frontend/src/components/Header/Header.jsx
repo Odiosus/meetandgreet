@@ -43,21 +43,21 @@ export default function Header () {
           </a>
           <div className={styles.header__overlay}>
             <nav className={styles.header__menu}>
+              <div className={styles.header__fastBooking}>
+                <Button
+                  to={'/fast-booking'}
+                  text={'Fast Booking'}
+                  icon={
+                    <img
+                      src={btnFastBooking}
+                      alt=""
+                      width={24}
+                      height={24}
+                    />}
+                  noBackground={true}
+                />
+              </div>
               <ul className={`${styles.header__menu_list} ${isMenuOpen ? styles.open : ''}`}>
-                <li className={styles.header__menu_item}>
-                  <Button
-                    to={'/fast-booking'}
-                    text={'Fast Booking'}
-                    icon={
-                      <img
-                        src={btnFastBooking}
-                        alt=""
-                        width={24}
-                        height={24}
-                      />}
-                    noBackground={true}
-                  />
-                </li>
                 <li className={styles.header__menu_item}>
                   <Button
                     to={'/services'}

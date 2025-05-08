@@ -172,13 +172,6 @@
     }
 
     &_item {
-      &:first-child {
-        margin-right: 170px;
-
-        @include laptop {
-          margin-right: 30px;
-        }
-      }
     }
 
     &_link {
@@ -199,6 +192,21 @@
       @include mobile {
         font-size: 15px;
       }
+    }
+  }
+
+  &__fastBooking {
+    margin-right: 170px;
+
+    @include laptop {
+      margin-right: 20px;
+    }
+
+    @include tablet {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-right: 0;
     }
   }
 
