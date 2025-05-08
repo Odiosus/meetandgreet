@@ -27,7 +27,7 @@ export default function Header () {
             title={'Home'}
           >
             <img
-              className={styles.header__logo_desctop}
+              className={styles.header__logo_desktop}
               src={logo}
               alt="Meet and greet"
               width={171}
