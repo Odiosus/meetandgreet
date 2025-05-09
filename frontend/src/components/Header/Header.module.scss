@@ -43,17 +43,12 @@
     align-items: center;
 
     @include laptop {
-      padding: 0 20px;
+      padding: var(--container-padding-x);
     }
 
     @include tablet {
       width: 100%;
-      padding: 0 15px;
       justify-content: space-between;
-    }
-
-    @include mobile {
-      padding: 0 10px;
     }
   }
 
