@@ -208,6 +208,17 @@
       transform: translateX(-50%);
       margin-right: 0;
     }
+
+    @include mobile {
+      display: none;
+    }
+
+    &_mobile {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-right: 0;
+    }
   }
 
   .languageButton {
