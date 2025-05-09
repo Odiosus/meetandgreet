@@ -57,6 +57,19 @@ export default function Header () {
                   noBackground={true}
                 />
               </div>
+              <div className={styles.header__fastBooking_mobile}>
+                <Button
+                  to={'/fast-booking'}
+                  icon={
+                    <img
+                      src={btnFastBooking}
+                      alt=""
+                      width={24}
+                      height={24}
+                    />}
+                  noBackground={true}
+                />
+              </div>
               <ul className={`${styles.header__menu_list} ${isMenuOpen ? styles.open : ''}`}>
                 <li className={styles.header__menu_item}>
                   <Button
