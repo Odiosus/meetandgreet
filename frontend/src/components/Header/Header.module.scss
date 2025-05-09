@@ -65,7 +65,7 @@
 
     @include laptop {
       margin-left: 25px;
-      gap: 30px;
+      gap: 50px;
     }
 
     @include tablet {
@@ -191,12 +191,6 @@
   }
 
   &__fastBooking {
-    margin-right: 170px;
-
-    @include laptop {
-      margin-right: 20px;
-    }
-
     @include tablet {
       position: absolute;
       left: 50%;
