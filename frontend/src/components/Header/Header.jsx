@@ -57,7 +57,7 @@ export default function Header () {
                   noBackground={true}
                 />
               </div>
-              <div className={styles.header__fastBooking_mobile}>
+              <div className={styles.header__fastBooking_mobileBtn}>
                 <Button
                   to={'/fast-booking'}
                   icon={

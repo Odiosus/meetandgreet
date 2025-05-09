@@ -213,53 +213,56 @@
       display: none;
     }
 
-    &_mobile {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-right: 0;
-    }
-  }
-
-  .languageButton {
-    padding: 0;
-    margin: 5px;
-
-    @include laptop {
-      font-size: 16px;
-    }
-
-    @include tablet {
-      margin: 3px;
-    }
-
-    @include mobile {
-      margin: 2px;
-      font-size: 15px;
-    }
-
-    &.active {
-      position: relative;
-
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: var(--color-white);
-      }
-    }
-
-    .hamburgerButton {
-      font-size: 24px;
+    &_mobileBtn {
+      display: none;
 
       @include mobile {
-        font-size: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-right: 0;
+      }
+    }
+
+    .languageButton {
+      padding: 0;
+      margin: 5px;
+
+      @include laptop {
+        font-size: 16px;
+      }
+
+      @include tablet {
+        margin: 3px;
+      }
+
+      @include mobile {
+        margin: 2px;
+        font-size: 15px;
+      }
+
+      &.active {
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: var(--color-white);
+        }
+      }
+
+      .hamburgerButton {
+        font-size: 24px;
+
+        @include mobile {
+          font-size: 20px;
+        }
       }
     }
   }
-}
 
 
