@@ -89,6 +89,7 @@ export default function Header () {
                 <li className={styles.header__menu_container}>
                   <div className={styles.header__menu_container_action}>
                     <Button
+                      to={"tel:+79036662213"}
                       icon={
                         <img
                           src={Phone}
@@ -142,6 +143,7 @@ export default function Header () {
                 </li>
                 <li className={styles.header__menu_container_action_desktop}>
                   <Button
+                    to={"tel:+79036662213"}
                     icon={
                       <img
                         src={Phone}
