@@ -86,6 +86,34 @@ export default function Header () {
                     text={'Travelers +'}
                   />
                 </li>
+                <li className={styles.header__menu_container}>
+                  <div className={styles.header__menu_container_action}>
+                    <Button
+                      icon={
+                        <img
+                          src={Phone}
+                          alt=""
+                          width={24}
+                          height={24}
+                        />}
+                      noBackground={true}
+                      aria-label={'Contact Us'}
+                    />
+                  </div>
+                  <div className={styles.header__menu_container_action}>
+                    <Button
+                      icon={
+                        <img
+                          src={Person}
+                          alt=""
+                          width={24}
+                          height={24}
+                        />}
+                      noBackground={true}
+                      aria-label={'User Profile'}
+                    />
+                  </div>
+                </li>
               </ul>
               <ul className={styles.header__menu_actions}>
                 <li>
@@ -112,7 +140,7 @@ export default function Header () {
                     }`}
                   />
                 </li>
-                <li className={styles.header__menu_action_hidden}>
+                <li className={styles.header__menu_container_action_desktop}>
                   <Button
                     icon={
                       <img
@@ -125,7 +153,7 @@ export default function Header () {
                     aria-label={'Contact Us'}
                   />
                 </li>
-                <li className={styles.header__menu_action_hidden}>
+                <li className={styles.header__menu_container_action_desktop}>
                   <Button
                     icon={
                       <img

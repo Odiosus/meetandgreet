@@ -146,13 +146,32 @@
       }
     }
 
-    &_action_hidden {
-      display: block;
+    &_container {
+      display: flex;
+      //gap: 10px;
+      align-items: center;
 
-      @include tablet {
+      @include mobile {
+        //gap: 8px;
+      }
+
+      &_action {
         display: none;
+
+        @include tablet {
+          display: block;
+        }
+
+        &_desktop {
+          display: block;
+
+          @include tablet {
+            display: none;
+          }
+        }
       }
     }
+
 
     &_hamburger {
       display: none;
