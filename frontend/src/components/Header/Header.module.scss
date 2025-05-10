@@ -148,11 +148,11 @@
 
     &_container {
       display: flex;
-      //gap: 10px;
+      gap: 1px;
       align-items: center;
 
       @include mobile {
-        //gap: 8px;
+        gap: 1px;
       }
 
       &_action {
