@@ -3,7 +3,9 @@ import Home from "./pages/Home.jsx";
 import FastBooking from "./pages/FastBooking.jsx";
 import Services from "./pages/Services.jsx";
 import Travelers from "./pages/Travelers.jsx";
+import Profile from "./pages/Profile.jsx";
 import { LanguageProvider } from "./context/LanguageContext.jsx";
+
 
 function App () {
   return (
@@ -25,6 +27,10 @@ function App () {
           <Route
             path={'/travelers'}
             element={<Travelers/>}
+          />
+          <Route
+            path={'/profile'}
+            element={<Profile/>}
           />
         </Routes>
       </Router>
