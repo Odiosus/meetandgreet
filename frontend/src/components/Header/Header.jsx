@@ -103,6 +103,7 @@ export default function Header () {
                   </div>
                   <div className={styles.header__menu_container_action}>
                     <Button
+                      to={'/profile'}
                       icon={
                         <img
                           src={Person}
@@ -157,6 +158,7 @@ export default function Header () {
                 </li>
                 <li className={styles.header__menu_container_action_desktop}>
                   <Button
+                    to={'/profile'}
                     icon={
                       <img
                         src={Person}
