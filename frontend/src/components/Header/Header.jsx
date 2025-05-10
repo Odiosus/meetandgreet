@@ -6,15 +6,29 @@ import btnFastBooking from '../../assets/btn_airplane.svg';
 import Phone from '../../assets/phone.svg';
 import Person from '../../assets/person.svg';
 import { useLanguage } from "../../context/LanguageContext.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Header () {
   const {language, changeLanguage} = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState( false )
+  const [isMobile, setIsMobile] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen( !isMenuOpen )
   }
+
+  useEffect( () => {
+    const mediaQuery = window.matchMedia( '(max-width: 480.98px)' );
+    setIsMobile(mediaQuery.matches);
+    const handleResize = (e) => {
+      setIsMobile(e.matches)
+    }
+
+    mediaQuery.addEventListener( 'change', handleResize );
+    return () => {
+      mediaQuery.removeEventListener( 'change', handleResize );
+    }
+  }, [] );
 
   return (
     <>
@@ -46,7 +60,7 @@ export default function Header () {
               <div className={styles.header__fastBooking}>
                 <Button
                   to={'/fast-booking'}
-                  text={'Fast Booking'}
+                  text={isMobile ? '' : 'Fast Booking'}
                   icon={
                     <img
                       src={btnFastBooking}
@@ -55,29 +69,18 @@ export default function Header () {
                       height={24}
                     />}
                   noBackground={true}
-                />
-              </div>
-              <div className={styles.header__fastBooking_mobileBtn}>
-                <Button
-                  to={'/fast-booking'}
-                  icon={
-                    <img
-                      src={btnFastBooking}
-                      alt=""
-                      width={24}
-                      height={24}
-                    />}
-                  noBackground={true}
+                  className={styles.fastBookingButton}
+                  aria-label={'Fast Booking'}
                 />
               </div>
               <ul className={`${styles.header__menu_list} ${isMenuOpen ? styles.open : ''}`}>
-                <li className={styles.header__menu_item}>
+                <li>
                   <Button
                     to={'/services'}
                     text={'Services +'}
                   />
                 </li>
-                <li className={styles.header__menu_item}>
+                <li>
                   <Button
                     to={'/travelers'}
                     text={'Travelers +'}
