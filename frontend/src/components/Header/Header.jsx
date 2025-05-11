@@ -1,31 +1,55 @@
+import { useState } from "react";
 import Button from "../Buttons/Button.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
+import { useIsMobile } from "../../hooks/useIsMobile.js";
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
 import logoMobile from '../../images/logoMobile.svg';
-import { useLanguage } from "../../context/LanguageContext.jsx";
-import { useEffect, useState } from "react";
 
+
+/**
+ * @function
+ * @name Header
+ * @description
+ *   Компонент шапки сайта
+ *
+ * @returns {JSX.Element}
+ *   Компонент JSX-элемента шапки
+ *
+ * @example
+ *   <Header />
+ */
 export default function Header () {
+  /**
+   * @type {string}
+   * @description
+   *   Текущий язык
+   */
   const {language, changeLanguage} = useLanguage()
-  const [isMenuOpen, setIsMenuOpen] = useState( false )
-  const [isMobile, setIsMobile] = useState( false )
 
+  /**
+   * @type {boolean}
+   * @description
+   *   Состояние меню (открыто/закрыто)
+   */
+  const [isMenuOpen, setIsMenuOpen] = useState( false )
+
+  /**
+   * @function
+   * @name toggleMenu
+   * @description
+   *   Переключает состояние меню
+   */
   const toggleMenu = () => {
     setIsMenuOpen( !isMenuOpen )
   }
 
-  useEffect( () => {
-    const mediaQuery = window.matchMedia( '(max-width: 480.98px)' );
-    setIsMobile( mediaQuery.matches );
-    const handleResize = (e) => {
-      setIsMobile( e.matches )
-    }
-
-    mediaQuery.addEventListener( 'change', handleResize );
-    return () => {
-      mediaQuery.removeEventListener( 'change', handleResize );
-    }
-  }, [] );
+  /**
+   * @type {boolean}
+   * @description
+   *   Флаг, указывающий, является ли устройство мобильным
+   */
+  const isMobile = useIsMobile()
 
   return (
     <>
