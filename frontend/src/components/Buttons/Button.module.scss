@@ -14,6 +14,13 @@
   font-weight: 500;
   line-height: 1.25;
   text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+  @include hover {
+    background-color: var(--color-white);
+    color: var(--color-blue-90);
+    transform: scale(1.05);
+  }
 
   @include laptop {
     padding: 5px 9px;
@@ -28,6 +35,12 @@
 
 .button-no-background {
   background-color: transparent;
+
+  @include hover {
+    background-color: transparent;
+    color: var(--color-blue-90);
+    transform: scale(1.05);
+  }
 }
 
 .icon {
@@ -37,6 +50,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.2s ease;
+
+  @include hover {
+    background-color: var(--color-white);
+    color: var(--color-blue-90);
+  }
 
   img {
     display: block;
