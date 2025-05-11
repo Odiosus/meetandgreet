@@ -1,5 +1,14 @@
 import styles from './Icon.module.scss';
 
+/**
+ * Объект icons содержит определения SVG путей для различных иконок.
+ * @type {Object.<string, JSX.Element>}
+ * @property {JSX.Element} airplane - Иконка самолета.
+ * @property {JSX.Element} phone - Иконка телефона.
+ * @property {JSX.Element} person - Иконка человека.
+ * @property {JSX.Element} burgerMenu - Иконка меню-бургера.
+ * @property {JSX.Element} closeMenu - Иконка закрытого меню.
+ */
 const icons = {
   airplane: (
     <path d="M0 7.8H1.8L3.6 10.2L10.2 10.2L7.2 0L9.6 0L15.6 10.2L22.2 10.2C22.7 10.2 23.125 10.375 23.475 10.725C23.825 11.075 24 11.5 24 12C24 12.5 23.825 12.925 23.475 13.275C23.125 13.625 22.7 13.8 22.2 13.8L15.6 13.8L9.6 24H7.2L10.2 13.8L3.6 13.8L1.8 16.2H0L1.2 12L0 7.8Z"
@@ -26,6 +35,16 @@ const icons = {
   ),
 }
 
+/**
+ * Компонент для отображения иконок.
+ *
+ * @param {Object} props - Параметры компонента.
+ * @param {string} props.name - Имя иконки.
+ * @param {number} [props.width=24] - Ширина иконки.
+ * @param {number} [props.height=24] - Высота иконки.
+ * @param {string} [props.className=''] - CSS-класс для иконки.
+ * @returns {JSX.Element} - Иконка.
+ */
 const Icon = ({name, width = 24, height = 24, className = ''}) => {
   if (!icons[name]) {
     return null;
