@@ -2,16 +2,13 @@ import Button from "../Buttons/Button.jsx";
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
 import logoMobile from '../../images/logoMobile.svg';
-import btnFastBooking from '../../assets/btn_airplane.svg';
-import Phone from '../../assets/phone.svg';
-import Person from '../../assets/person.svg';
 import { useLanguage } from "../../context/LanguageContext.jsx";
 import { useEffect, useState } from "react";
 
 export default function Header () {
   const {language, changeLanguage} = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState( false )
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState( false )
 
   const toggleMenu = () => {
     setIsMenuOpen( !isMenuOpen )
@@ -19,9 +16,9 @@ export default function Header () {
 
   useEffect( () => {
     const mediaQuery = window.matchMedia( '(max-width: 480.98px)' );
-    setIsMobile(mediaQuery.matches);
+    setIsMobile( mediaQuery.matches );
     const handleResize = (e) => {
-      setIsMobile(e.matches)
+      setIsMobile( e.matches )
     }
 
     mediaQuery.addEventListener( 'change', handleResize );
@@ -61,15 +58,8 @@ export default function Header () {
                 <Button
                   to={'/fast-booking'}
                   text={isMobile ? '' : 'Fast Booking'}
-                  icon={
-                    <img
-                      src={btnFastBooking}
-                      alt=""
-                      width={24}
-                      height={24}
-                    />}
+                  icon={'airplane'}
                   noBackground={true}
-                  className={styles.fastBookingButton}
                   aria-label={'Fast Booking'}
                 />
               </div>
@@ -90,13 +80,7 @@ export default function Header () {
                   <div className={styles.header__menu_container_action}>
                     <Button
                       to={"tel:+79036662213"}
-                      icon={
-                        <img
-                          src={Phone}
-                          alt=""
-                          width={24}
-                          height={24}
-                        />}
+                      icon={'phone'}
                       noBackground={true}
                       aria-label={'Contact Us'}
                     />
@@ -104,13 +88,7 @@ export default function Header () {
                   <div className={styles.header__menu_container_action}>
                     <Button
                       to={'/profile'}
-                      icon={
-                        <img
-                          src={Person}
-                          alt=""
-                          width={24}
-                          height={24}
-                        />}
+                      icon={'person'}
                       noBackground={true}
                       aria-label={'User Profile'}
                     />
@@ -145,13 +123,7 @@ export default function Header () {
                 <li className={styles.header__menu_container_action_desktop}>
                   <Button
                     to={"tel:+79036662213"}
-                    icon={
-                      <img
-                        src={Phone}
-                        alt=""
-                        width={24}
-                        height={24}
-                      />}
+                    icon={'phone'}
                     noBackground={true}
                     aria-label={'Contact Us'}
                   />
@@ -159,13 +131,7 @@ export default function Header () {
                 <li className={styles.header__menu_container_action_desktop}>
                   <Button
                     to={'/profile'}
-                    icon={
-                      <img
-                        src={Person}
-                        alt=""
-                        width={24}
-                        height={24}
-                      />}
+                    icon={'person'}
                     noBackground={true}
                     aria-label={'User Profile'}
                   />
@@ -173,11 +139,7 @@ export default function Header () {
                 <li className={styles.header__menu_hamburger}>
                   <Button
                     onClick={toggleMenu}
-                    icon={
-                      <span className={styles.header__menu_hamburger_icon}>
-                      {isMenuOpen ? '✕' : '☰'}
-                      </span>
-                    }
+                    icon={isMenuOpen ? 'closeMenu' : 'burgerMenu'}
                     noBackground={true}
                     aria-label={'Menu'}
                   />
