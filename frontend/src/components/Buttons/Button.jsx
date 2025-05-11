@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Icon from "../Icons/Icon.jsx";
 import styles from "./Button.module.scss";
 
 /**
@@ -7,8 +8,7 @@ import styles from "./Button.module.scss";
  * @param {string} [props.text] - Текст кнопки.
  * @param {string} [props.to] - Если указан, то кнопка будет ссылкой на указанный URL.
  * @param {function} [props.onClick] - Функция, которая будет вызвана при клике на кнопку.
- * @param {ReactNode} [props.icon] - Иконка, которая будет отображаться на кнопке.
- * @param {boolean} [props.noBackground] - Если true, то кнопка будет иметь прозрачный фон.
+ * @param {string} [props.icon] - Название иконки (например, 'phone', 'person', 'airplane'). * @param {boolean} [props.noBackground] - Если true, то кнопка будет иметь прозрачный фон.
  * @param {string} [props.className] - Дополнительные классы для кнопки.
  * @returns {ReactComponent} Компонент кнопки.
  */
@@ -21,7 +21,14 @@ export default function Button ({text, to, onClick, icon, noBackground, classNam
         to={to}
         className={baseClassName}
       >
-        {icon && <span className={styles.icon}>{icon}</span>}
+        {icon &&
+          <span className={styles.icon}>
+            <Icon
+              name={icon}
+              width={24}
+              height={24}
+            />
+          </span>}
         {text}
       </Link>
     )
@@ -31,7 +38,14 @@ export default function Button ({text, to, onClick, icon, noBackground, classNam
       className={baseClassName}
       onClick={onClick}
     >
-      {icon && <span className={styles.icon}>{icon}</span>}
+      {icon &&
+        <span className={styles.icon}>
+          <Icon
+            name={icon}
+            width={24}
+            height={24}
+          />
+        </span>}
       {text}
     </button>
   );
