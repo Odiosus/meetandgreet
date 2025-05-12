@@ -1,13 +1,16 @@
+@use '../../styles' as *;
+
 .hero {
   position: relative;
   height: 100vh;
-  overflow: hidden;
-  display: flex;
+  //overflow: hidden;
+  display: grid;
   justify-content: center;
   align-items: center;
+
+  &__heroContent {
+    position: relative;
+    z-index: 1;
+  }
 }
 
-.heroContent {
-  position: relative;
-  z-index: 1;
-}
