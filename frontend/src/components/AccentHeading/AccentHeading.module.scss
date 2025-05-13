@@ -1,0 +1,10 @@
+@use '../../styles' as *;
+
+.heading {
+  font-family: var(--font-family-base);
+}
+
+.accent {
+  font-family: var(--font-family-accent);
+  font-style: italic;
+}
