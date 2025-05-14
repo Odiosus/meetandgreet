@@ -4,6 +4,7 @@ import SearchField from './SearchField.jsx';
 import styles from './AirportSearch.module.scss';
 import { airports } from '../../data/airports';
 import { useAirportSearch } from '../../hooks/useAirportSearch';
+import Button from "../Buttons/Button.jsx";
 
 export default function AirportSearch () {
   const fields = ['departure', 'transit', 'arrival'];
@@ -57,10 +58,12 @@ export default function AirportSearch () {
             onSelect={handleSelect}
           />
         ) )}
-        <button className={styles.nextButton}
-          onClick={handleNext}>
-          →
-        </button>
+        <Button
+          className={styles.nextButton}
+          onClick={handleNext}
+          icon={'rightArrow'}
+          aria-label="Next step"
+        />
       </div>
     </div>
   );
