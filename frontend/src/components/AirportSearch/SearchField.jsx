@@ -10,20 +10,31 @@ export default function SearchField ({
                                        onSearchChange,
                                        onSelect,
                                      }) {
+
+
+  const hasValue = selected || searchTerm;
+
   return (
     <div className={styles.field}>
-      <label>{label}</label>
-      <input
-        type="text"
-        value={selected || searchTerm}
-        onChange={(e) => onSearchChange( field, e.target.value )}
-        onFocus={() => isOpen && searchTerm.length >= 3}
-        placeholder="Type to search..."
-        className={styles.input}
-      />
+      <div className={styles.inputWrapper}>
+        <label
+          className={`${styles.label} ${hasValue ? styles.labelActive : ''}`}
+          htmlFor={field}
+        >
+          {label}
+        </label>
+        <input
+          type="text"
+          id={field}
+          value={selected || searchTerm}
+          onChange={(e) => onSearchChange( field, e.target.value )}
+          onFocus={() => isOpen && searchTerm.length >= 3}
+          className={styles.input}
+        />
+      </div>
       {isOpen && searchTerm.length >= 3 && (
         <ul className={styles.dropdown}>
-          {filteredData.map( item => (
+          {filteredData.map( (item) => (
             <li
               key={item.code}
               onClick={() => onSelect( item, field )}
