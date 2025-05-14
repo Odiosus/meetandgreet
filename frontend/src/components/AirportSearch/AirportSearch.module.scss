@@ -1,0 +1,94 @@
+// components/AirportSearch/AirportSearch.module.scss
+@use '../../styles' as *;
+
+.searchContainer {
+  display: flex;
+  //flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 94px;
+}
+
+.searchFields {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+
+  label {
+    font-size: 14px;
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .input {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-gray);
+    width: 200px;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownItem {
+  padding: 10px 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.nextButton {
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
