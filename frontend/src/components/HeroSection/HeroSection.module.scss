@@ -5,11 +5,16 @@
   height: 100vh;
   display: grid;
   justify-content: center;
-  align-items: center;
 
   &__heroContent {
+    margin-top: 175px;
     position: relative;
     z-index: 1;
+
+    &_title {
+      //margin: 0;
+      margin-bottom: 13px;
+    }
   }
 }
 
