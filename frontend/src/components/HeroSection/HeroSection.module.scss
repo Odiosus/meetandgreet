@@ -12,14 +12,18 @@
     z-index: 1;
 
   @include laptop {
-    margin-top: 120px;
+    margin-top: 135px;
   }
 
     &_title {
       margin-bottom: 13px;
 
       @include laptop {
-        font-size: 50px;
+        font-size: 58px;
+      }
+
+      @include mobile {
+        font-size: 30px;
       }
     }
   }
