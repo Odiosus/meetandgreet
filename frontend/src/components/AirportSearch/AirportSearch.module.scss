@@ -30,6 +30,10 @@
     align-items: center;
     gap: 42px;
   }
+
+  @include mobile {
+    gap: 36px;
+  }
 }
 
 .field {
