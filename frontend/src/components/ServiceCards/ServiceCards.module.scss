@@ -1,0 +1,105 @@
+@use '../../styles' as *;
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.title {
+  font-size: 1.875rem; /* 30px, эквивалент text-3xl */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1f2937; /* text-gray-800 */
+}
+
+.cardContainer {
+  display: flex;
+  gap: 8px;
+  height: 400px;
+  padding: 20px;
+  background-color: #fff; /* bg-white */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+}
+
+.serviceCard {
+  flex: 0 0 80px;
+  overflow: hidden;
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    flex: 1 0 300px;
+  }
+}
+
+.serviceTitle {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: all 0.5s ease;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+
+  .serviceCard:hover & {
+    writing-mode: horizontal-tb;
+    transform: rotate(0deg);
+  }
+}
+
+.serviceContent {
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.5s ease;
+  transition-delay: 0.2s; /* Задержка для появления контента */
+
+  .serviceCard:hover & {
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+.serviceDescription {
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.serviceFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.servicePrice {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700;
+  color: #fff;
+}
+
+.serviceLink {
+  background-color: #fff;
+  color: #1f2937; /* text-gray-800 */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+  }
+
+  .fa-arrow-right {
+    margin-left: 0.25rem;
+  }
+}
