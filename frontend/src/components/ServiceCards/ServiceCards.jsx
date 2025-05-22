@@ -1,75 +1,81 @@
 import styles from './ServiceCards.module.scss';
+import meetAssistImage from '../../assets/images/bg-card/meet-assist.png';
+import fastTrackImage from '../../assets/images/bg-card/fast-track.png';
+import vipLoungeImage from '../../assets/images/bg-card/vip-lounge.png';
+import transferImage from '../../assets/images/bg-card/transfer.png';
+import officialsImage from '../../assets/images/bg-card/officials.png';
+import cipImage from '../../assets/images/bg-card/cip.png';
+import Button from "../Buttons/Button.jsx";
 
-// Данные для карточек (заглушка)
 const services = [
   {
-    title: 'Веб-разработка',
-    description: 'Создание современных адаптивных веб-сайтов и веб-приложений с использованием передовых технологий.',
-    price: 'от 25 000 ₽',
+    title: 'MEET+ASSIST',
+    description: 'High-quality passenger escort service \n' +
+      'at the airport, providing maximum comfort, convenience during your trip',
+    price: 'from 200 €',
     link: '#',
-    backgroundColor: '#FF9AA2',
+    backgroundImage: meetAssistImage,
   },
   {
-    title: 'Мобильные приложения',
-    description: 'Разработка кроссплатформенных мобильных приложений для iOS и Android с нативным пользовательским опытом.',
-    price: 'от 50 000 ₽',
+    title: 'FAST TRACK',
+    description: 'Premium passenger transportation service to or from the airport, providing maximum comfort, convenience and personalized service',
+    price: 'from 200 €',
     link: '#',
-    backgroundColor: '#FFB7B2',
+    backgroundImage: fastTrackImage,
   },
   {
-    title: 'UI/UX дизайн',
-    description: 'Создание интуитивно понятных интерфейсов с продуманным пользовательским опытом для вашего продукта.',
-    price: 'от 15 000 ₽',
+    title: 'VIP LOUNGE',
+    description: 'A comfortable flight waiting with access to exclusive amenities, including luxury seating areas, snacks and drinks, as well as personalized service',
+    price: 'from 200 €',
     link: '#',
-    backgroundColor: '#FFDAC1',
+    backgroundImage: vipLoungeImage,
   },
   {
-    title: 'SEO продвижение',
-    description: 'Комплексное продвижение сайтов в поисковых системах для привлечения целевого трафика и увеличения продаж.',
-    price: 'от 10 000 ₽/мес',
+    title: 'AIRPORT VIP TRANSFER',
+    description: 'A comfortable flight waiting with access to exclusive amenities, including luxury seating areas, snacks and drinks, as well as personalized service',
+    price: 'from 200 €',
     link: '#',
-    backgroundColor: '#E2F0CB',
+    backgroundImage: transferImage,
   },
   {
-    title: 'Контекстная реклама',
-    description: 'Настройка и ведение рекламных кампаний в Яндекс.Директ и Google Ads для быстрого привлечения клиентов.',
-    price: 'от 15 000 ₽',
+    title: 'OFFICIALS LOUNGE',
+    description: 'Exclusive recreation areas for VIP persons \n' +
+      'and delegations, personalized service \n' +
+      'and an increased level of security ',
+    price: 'from 200 €',
     link: '#',
-    backgroundColor: '#B5EAD7',
+    backgroundImage: officialsImage,
   },
   {
-    title: 'Поддержка сайтов',
-    description: 'Регулярное обновление контента, техническая поддержка и оперативное устранение неполадок на вашем сайте.',
-    price: 'от 5 000 ₽/мес',
+    title: 'CIP SERVICE',
+    description: 'Expedited passage of all formalities, comfortable recreation areas, personalized service for the most convenient and fast travel',
+    price: 'from 200 €',
     link: '#',
-    backgroundColor: '#C7CEEA',
+    backgroundImage: cipImage,
   },
 ];
 
 // Компонент для одной карточки
-function ServiceCard ({title, description, price, link, backgroundColor}) {
+function ServiceCard ({title, description, price, link, backgroundImage}) {
   return (
     <div className={styles.serviceCard}
-      style={{backgroundColor}}>
+      style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
       <h2 className={styles.serviceTitle}>{title}</h2>
       <div className={styles.serviceContent}>
         <p className={styles.serviceDescription}>{description}</p>
         <div className={styles.serviceFooter}>
           <span className={styles.servicePrice}>{price}</span>
-          <a href={link}
-            className={styles.serviceLink}>
-            Подробнее <i className="fas fa-arrow-right ml-1"></i>
-          </a>
+          <Button text="See more" to={link} />
         </div>
       </div>
     </div>
   );
 }
 
+// Основной компонент
 export default function ServiceCards () {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Наши услуги</h1>
       <div className={styles.cardContainer}>
         {services.map( (service, index) => (
           <ServiceCard
@@ -78,7 +84,7 @@ export default function ServiceCards () {
             description={service.description}
             price={service.price}
             link={service.link}
-            backgroundColor={service.backgroundColor}
+            backgroundImage={service.backgroundImage}
           />
         ) )}
       </div>
