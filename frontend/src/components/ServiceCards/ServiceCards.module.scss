@@ -3,33 +3,33 @@
 .container {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  max-height: 617px;
+  height: 100%;
   padding: 16px;
   z-index: 1;
 }
 
 .title {
-  font-size: 1.875rem; /* 30px, эквивалент text-3xl */
+  font-size: 1.875rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 2rem;
-  color: #1f2937; /* text-gray-800 */
+  color: #1f2937;
 }
 
 .cardContainer {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  height: 400px;
-  padding: 20px;
-  border-radius: 0.75rem; /* rounded-xl */
+  gap: 31px;
+  height: 100%;
+  border-radius: 0.75rem;
 }
 
 .serviceCard {
-  flex: 0 0 80px;
+  flex: 0 0 20%;
   overflow: hidden;
-  border-radius: 0.5rem; /* rounded-lg */
-  padding: 1rem;
+  border-radius: 30px;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -44,7 +44,7 @@
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   transition: all 0.5s ease;
-  font-size: 1.25rem; /* text-xl */
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 1rem;
@@ -60,7 +60,7 @@
   opacity: 0;
   max-height: 0;
   transition: all 0.5s ease;
-  transition-delay: 0.2s; /* Задержка для появления контента */
+  transition-delay: 0.2s;
 
   .serviceCard:hover & {
     opacity: 1;
@@ -80,14 +80,14 @@
 }
 
 .servicePrice {
-  font-size: 1.25rem; /* text-xl */
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
 }
 
 .serviceLink {
   background-color: #fff;
-  color: #1f2937; /* text-gray-800 */
+  color: #1f2937;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
@@ -96,7 +96,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #f3f4f6; /* hover:bg-gray-100 */
+    background-color: #f3f4f6;
   }
 
   .fa-arrow-right {
