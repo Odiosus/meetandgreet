@@ -7,6 +7,10 @@
   height: 100%;
   padding: 16px;
   z-index: 1;
+
+  @include laptop {
+    height: 80%;
+  }
 }
 
 .title {

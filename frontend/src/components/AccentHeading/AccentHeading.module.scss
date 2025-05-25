@@ -3,11 +3,10 @@
 .heading {
   font-family: var(--font-family-base), serif;
   text-align: center;
-  margin-bottom: 90px;
+  margin-bottom: 10%;
 
   @include laptop {
     font-size: 30px;
-    margin-bottom: 90px;
   }
 
   @include mobile {
