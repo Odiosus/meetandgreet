@@ -1,3 +1,4 @@
+/*
 import PropTypes from "prop-types";
 import React from "react";
 import x12 from "./1-2.png";
@@ -240,3 +241,4 @@ Footer.propTypes = {
   img: PropTypes.string,
   img1: PropTypes.string,
 };
+*/
