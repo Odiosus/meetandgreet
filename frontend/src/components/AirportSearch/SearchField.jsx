@@ -1,98 +1,61 @@
+import { useMemo } from 'react';
 import styles from './AirportSearch.module.scss';
 
 /**
- * Компонент SearchField отображает поле ввода для поиска аэропортов с выпадающим списком автодополнения.
- * Используется в составе формы поиска (например, AirportSearch) для выбора аэропортов (отправления, транзита, прибытия).
- * Поддерживает интерактивную метку, которая изменяет стиль при наличии значения, и выпадающий список с отфильтрованными результатами.
- *
- * @component
- * @example
- * ```jsx
- * import { useAirportSearch } from '../../hooks/useAirportSearch';
- * import airports from '../../data/airports';
- *
- * const fields = ['departure'];
- * const { searchTerms, selected, isOpen, getFilteredData, handleSearchChange, handleSelect } = useAirportSearch(fields, airports);
- *
- * <SearchField
- *   field="departure"
- *   label="Departure"
- *   searchTerm={searchTerms.departure}
- *   selected={selected.departure}
- *   isOpen={isOpen.departure}
- *   filteredData={getFilteredData(searchTerms.departure)}
- *   onSearchChange={handleSearchChange}
- *   onSelect={handleSelect}
- * />
- * ```
+ * Компонент Dropdown для отображения выпадающего списка с результатами поиска.
+ */
+function Dropdown ({filteredData, field, onSelect, focusedIndex}) {
+  return (
+    <ul className={styles.dropdown}
+      role="listbox"
+      id={`${field}-listbox`}>
+      {filteredData.length === 0 ? (
+        <li className={styles.dropdownItem}
+          role="option"
+          aria-selected="false">
+          Ничего не найдено
+        </li>
+      ) : (
+        filteredData.map( (item, index) => (
+          <li
+            key={item.code}
+            onClick={() => onSelect( item, field )}
+            className={`${styles.dropdownItem} ${index === focusedIndex ? styles.dropdownItemFocused : ''}`}
+            role="option"
+            aria-selected={index === focusedIndex}
+          >
+            {item.name} ({item.code}) - {item.city}
+          </li>
+        ) )
+      )}
+    </ul>
+  );
+}
+
+/**
+ * Компонент SearchField для ввода и поиска аэропортов с автодополнением.
  */
 export default function SearchField ({
-                                       /**
-                                        * Уникальный идентификатор поля (например, 'departure', 'arrival').
-                                        * Используется для связи метки и поля ввода через htmlFor и id.
-                                        * @type {string}
-                                        */
                                        field,
-
-                                       /**
-                                        * Текст метки, отображаемый над полем ввода (например, 'Departure').
-                                        * @type {string}
-                                        */
                                        label,
-
-                                       /**
-                                        * Текущий поисковый запрос, введённый пользователем.
-                                        * @type {string}
-                                        * @example 'Lon' // Частичный ввод для поиска аэропорта
-                                        */
                                        searchTerm,
-
-                                       /**
-                                        * Выбранное значение (например, 'London Heathrow (LHR)').
-                                        * Если задано, отображается вместо searchTerm.
-                                        * @type {string}
-                                        * @example 'London Heathrow (LHR)'
-                                        */
                                        selected,
-
-                                       /**
-                                        * Флаг, указывающий, открыт ли выпадающий список с результатами поиска.
-                                        * @type {boolean}
-                                        */
                                        isOpen,
-
-                                       /**
-                                        * Массив отфильтрованных данных для выпадающего списка.
-                                        * Каждый элемент — объект с информацией об аэропорте.
-                                        * @type {Array<{ name: string, code: string, city: string }>}
-                                        * @example [{ name: 'London Heathrow', code: 'LHR', city: 'London' }]
-                                        */
+                                       focusedIndex,
                                        filteredData,
-
-                                       /**
-                                        * Callback для обработки изменений в поле ввода.
-                                        * Вызывается при каждом изменении текста в input.
-                                        * @type {(field: string, value: string) => void}
-                                        * @example
-                                        * onSearchChange('departure', 'LHR');
-                                        */
                                        onSearchChange,
-
-                                       /**
-                                        * Callback для обработки выбора элемента из выпадающего списка.
-                                        * Вызывается при клике на элемент списка.
-                                        * @type {(item: { name: string, code: string, city: string }, field: string) => void}
-                                        * @example
-                                        * onSelect({ name: 'London Heathrow', code: 'LHR', city: 'London' }, 'departure');
-                                        */
                                        onSelect,
+                                       handleFocus,
+                                       handleBlur,
+                                       handleKeyDown,
                                      }) {
-  /**
-   * Флаг, указывающий, есть ли значение в поле (либо selected, либо searchTerm).
-   * Используется для стилизации метки.
-   * @type {boolean}
-   */
-  const hasValue = selected || searchTerm;
+  const hasValue = !!selected || !!searchTerm;
+
+  // Мемоизация отфильтрованных данных
+  const memoizedFilteredData = useMemo(
+    () => filteredData,
+    [filteredData]
+  );
 
   return (
     <div className={styles.field}>
@@ -108,22 +71,24 @@ export default function SearchField ({
           id={field}
           value={selected || searchTerm}
           onChange={(e) => onSearchChange( field, e.target.value )}
-          onFocus={() => isOpen && searchTerm.length >= 3}
+          onFocus={() => handleFocus( field )}
+          onBlur={() => handleBlur( field )}
+          onKeyDown={(e) => handleKeyDown( field, e, memoizedFilteredData )}
           className={styles.input}
+          autoComplete="off"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-controls={`${field}-listbox`}
+          aria-expanded={isOpen}
         />
       </div>
-      {isOpen && searchTerm.length >= 3 && (
-        <ul className={styles.dropdown}>
-          {filteredData.map( (item) => (
-            <li
-              key={item.code}
-              onClick={() => onSelect( item, field )}
-              className={styles.dropdownItem}
-            >
-              {item.name} ({item.code}) - {item.city}
-            </li>
-          ) )}
-        </ul>
+      {isOpen && (
+        <Dropdown
+          filteredData={memoizedFilteredData}
+          field={field}
+          onSelect={onSelect}
+          focusedIndex={focusedIndex}
+        />
       )}
     </div>
   );
