@@ -16,20 +16,21 @@ export const useAirportSearch = (fields, data, validate) => {
   );
   const [focusedIndex, setFocusedIndex] = useState(
     fields.reduce( (acc, field) => {
-      acc[field] = -1; // -1 означает отсутствие фокуса на элементе списка
+      acc[field] = -1;
       return acc;
     }, {} )
   );
 
   const getFilteredData = useCallback( (term, fieldData = data) => {
     if (!term) {
-      return fieldData; // Показываем все аэропорты, если поиск пустой
+      return fieldData.slice( 0, 3 ); // Ограничиваем до 3 элементов, если поиск пустой
     }
-    return fieldData.filter(
+    const filtered = fieldData.filter(
       (item) =>
         item.name.toLowerCase().includes( term.toLowerCase() ) ||
         item.code.toLowerCase().includes( term.toLowerCase() )
     );
+    return filtered.slice( 0, 3 ); // Ограничиваем до 3 элементов после фильтрации
   }, [data] );
 
   const handleSearchChange = useCallback( (field, value) => {
@@ -66,7 +67,6 @@ export const useAirportSearch = (fields, data, validate) => {
   }, [] );
 
   const handleBlur = useCallback( (field) => {
-    // Задержка для обработки клика по элементу списка
     setTimeout( () => {
       setIsOpen( (prev) => ({...prev, [field]: false}) );
       setFocusedIndex( (prev) => ({...prev, [field]: -1}) );
@@ -82,7 +82,7 @@ export const useAirportSearch = (fields, data, validate) => {
       e.preventDefault();
       setFocusedIndex( (prev) => ({
         ...prev,
-        [field]: Math.min( prev[field] + 1, filteredData.length - 1 ),
+        [field]: Math.min( prev[field] + 1, Math.min( filteredData.length - 1, 2 ) ), // Ограничиваем до 3 элементов
       }) );
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();

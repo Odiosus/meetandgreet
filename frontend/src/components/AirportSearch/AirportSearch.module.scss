@@ -107,7 +107,7 @@
   margin-top: 5px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
-  max-height: 200px;
+  max-height: 150px; /* Уменьшено, так как максимум 3 элемента + подсказка */
   overflow-y: auto;
   list-style: none;
   padding: 0;
@@ -127,6 +127,13 @@
   @include hover {
     background-color: var(--color-white);
     color: var(--color-blue-90);
+  }
+
+  &[role="presentation"] {
+    cursor: default;
+    font-style: italic;
+    color: var(--color-gray-50);
+    pointer-events: none;
   }
 }
 

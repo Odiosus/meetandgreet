@@ -4,7 +4,7 @@ import styles from './AirportSearch.module.scss';
 /**
  * Компонент Dropdown для отображения выпадающего списка с результатами поиска.
  */
-function Dropdown ({filteredData, field, onSelect, focusedIndex}) {
+function Dropdown ({filteredData, field, onSelect, focusedIndex, hasMoreResults}) {
   return (
     <ul className={styles.dropdown}
       role="listbox"
@@ -16,17 +16,25 @@ function Dropdown ({filteredData, field, onSelect, focusedIndex}) {
           Ничего не найдено
         </li>
       ) : (
-        filteredData.map( (item, index) => (
-          <li
-            key={item.code}
-            onClick={() => onSelect( item, field )}
-            className={`${styles.dropdownItem} ${index === focusedIndex ? styles.dropdownItemFocused : ''}`}
-            role="option"
-            aria-selected={index === focusedIndex}
-          >
-            {item.name} ({item.code}) - {item.city}
-          </li>
-        ) )
+        <>
+          {filteredData.map( (item, index) => (
+            <li
+              key={item.code}
+              onClick={() => onSelect( item, field )}
+              className={`${styles.dropdownItem} ${index === focusedIndex ? styles.dropdownItemFocused : ''}`}
+              role="option"
+              aria-selected={index === focusedIndex}
+            >
+              {item.name} ({item.code}) - {item.city}
+            </li>
+          ) )}
+          {hasMoreResults && (
+            <li className={styles.dropdownItem}
+              role="presentation">
+              ...и ещё результаты
+            </li>
+          )}
+        </>
       )}
     </ul>
   );
@@ -51,11 +59,12 @@ export default function SearchField ({
                                      }) {
   const hasValue = !!selected || !!searchTerm;
 
-  // Мемоизация отфильтрованных данных
-  const memoizedFilteredData = useMemo(
-    () => filteredData,
-    [filteredData]
-  );
+  // Мемоизация отфильтрованных данных и флага hasMoreResults
+  const {memoizedFilteredData, hasMoreResults} = useMemo( () => {
+    const slicedData = filteredData.slice( 0, 3 ); // Убедимся, что ограничение применяется
+    const hasMoreResults = filteredData.length > 3; // Проверяем, есть ли дополнительные результаты
+    return {memoizedFilteredData: slicedData, hasMoreResults};
+  }, [filteredData] );
 
   return (
     <div className={styles.field}>
@@ -80,6 +89,7 @@ export default function SearchField ({
           aria-autocomplete="list"
           aria-controls={`${field}-listbox`}
           aria-expanded={isOpen}
+          aria-owns={`${field}-listbox`}
         />
       </div>
       {isOpen && (
@@ -88,6 +98,7 @@ export default function SearchField ({
           field={field}
           onSelect={onSelect}
           focusedIndex={focusedIndex}
+          hasMoreResults={hasMoreResults}
         />
       )}
     </div>
