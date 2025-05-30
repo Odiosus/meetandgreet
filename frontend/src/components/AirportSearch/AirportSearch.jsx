@@ -5,16 +5,41 @@ import { airports } from '../../data/airports';
 import { useAirportSearch } from '../../hooks/useAirportSearch';
 import Button from '../Buttons/Button.jsx';
 
+/**
+ * Компонент AirportSearch - это форма поиска аэропортов
+ * со следующими полями: аэропорт отправления, аэропорт транзита,
+ * аэропорт прибытия.
+ * <br />
+ * <br />
+ * Он использует хук {@link useAirportSearch}, чтобы
+ * хранить состояние формы, фильтровать аэропорты,
+ * обрабатывать события ввода, фокуса,_blura_и нажатия
+ * клавиш.
+ * <br />
+ * <br />
+ * Он также использует {@link Button} для кнопки "Следующий шаг".
+ * <br />
+ * <br />
+ * @returns {React.ReactElement} - компонент AirportSearch
+ */
 export default function AirportSearch () {
   const fields = ['departure', 'transit', 'arrival'];
   const navigate = useNavigate();
 
+  /**
+   * Функция-валидатор, которая проверяет, что аэропорт отправления
+   * не может быть таким же, как аэропорт прибытия.
+   * @param {string} field - поле, которое нужно валидировать
+   * @param {string} currentCode - код текущего аэропорта
+   * @param {string[]} otherCodes - коды других аэропортов
+   * @returns {string|null} - ошибка валидации, если она есть, null - если нет
+   */
   const validate = (field, currentCode, otherCodes) => {
     if (field === 'departure' && otherCodes.includes( currentCode )) {
-      return 'Аэропорт отправления не может быть таким же, как аэропорт прибытия.';
+      return '   ,       .';
     }
     if (field === 'arrival' && otherCodes.includes( currentCode )) {
-      return 'Аэропорт прибытия не может быть таким же, как аэропорт отправления.';
+      return '   ,       .';
     }
     return null;
   };
@@ -32,14 +57,20 @@ export default function AirportSearch () {
     handleKeyDown,
   } = useAirportSearch( fields, airports, validate );
 
+  /**
+   * Обработчик события нажатия кнопки "Следующий шаг".
+   * Он проверяет, что пользователь выбрал аэропорты отправления
+   * и прибытия, и что они не одинаковы. Если это так, то
+   * он перенаправляет на страницу /next-form.
+   */
   const handleNext = () => {
     const departureCode = selected.departure ? selected.departure.match( /\((.*?)\)/ )?.[1] : null;
     const arrivalCode = selected.arrival ? selected.arrival.match( /\((.*?)\)/ )?.[1] : null;
 
     if (!selected.departure || !selected.arrival) {
-      alert( 'Пожалуйста, выберите аэропорты отправления и прибытия.' );
+      alert( '   ,       .' );
     } else if (departureCode === arrivalCode) {
-      alert( 'Аэропорты отправления и прибытия не могут быть одинаковыми.' );
+      alert( '   ,       .' );
     } else {
       navigate( '/next-form', {state: selected} );
     }
@@ -69,7 +100,7 @@ export default function AirportSearch () {
           className={styles.nextButton}
           onClick={handleNext}
           icon={'rightArrow'}
-          aria-label="Следующий шаг"
+          aria-label=" "
         />
       </div>
     </div>
