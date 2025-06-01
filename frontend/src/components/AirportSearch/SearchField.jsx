@@ -4,6 +4,17 @@ import styles from './AirportSearch.module.scss';
 /**
  * Компонент Dropdown для отображения выпадающего списка с результатами поиска.
  */
+/**
+ * Компонент Dropdown для отображения выпадающего списка с результатами поиска.
+ *
+ * @param {object} props - объект свойств
+ * @param {string} props.field - имя поля, для которого отображается выпадающий список
+ * @param {function} props.onSelect - функция, которая будет вызвана, когда пользователь
+ *                                    выберет аэропорт из списка
+ * @param {number} props.focusedIndex - индекс элемента списка, на котором находится фокус
+ * @param {boolean} props.hasMoreResults - флаг, указывающий, есть ли дополнительные результаты
+ *                                         поиска, которые не отображаются в списке
+ */
 function Dropdown ({filteredData, field, onSelect, focusedIndex, hasMoreResults}) {
   return (
     <ul className={styles.dropdown}
@@ -42,6 +53,25 @@ function Dropdown ({filteredData, field, onSelect, focusedIndex, hasMoreResults}
 
 /**
  * Компонент SearchField для ввода и поиска аэропортов с автодополнением.
+ *
+ * @param {object} props - объект свойств
+ * @param {string} props.field - имя поля, для которого отображается выпадающий список
+ * @param {string} props.label - текст, который будет отображаться в лейбле
+ * @param {string} props.searchTerm - текст, который пользователь ввёл в поле
+ * @param {string} props.selected - код выбранного аэропорта
+ * @param {boolean} props.isOpen - флаг, указывающий, является ли выпадающий список открытым
+ * @param {number} props.focusedIndex - индекс элемента списка, на котором находится фокус
+ * @param {object[]} props.filteredData - массив результатов поиска
+ * @param {function} props.onSearchChange - функция, которая будет вызвана, когда пользователь изменит
+ *                                          текст в поле ввода
+ * @param {function} props.onSelect - функция, которая будет вызвана, когда пользователь
+ *                                    выберет аэропорт из списка
+ * @param {function} props.handleFocus - функция, которая будет вызвана, когда поле ввода
+ *                                        получит фокус
+ * @param {function} props.handleBlur - функция, которая будет вызвана, когда поле ввода
+ *                                       потеряет фокус
+ * @param {function} props.handleKeyDown - функция, которая будет вызвана, когда пользователь
+ *                                          нажмёт клавишу, когда поле ввода имеет фокус
  */
 export default function SearchField ({
                                        field,
@@ -59,7 +89,7 @@ export default function SearchField ({
                                      }) {
   const hasValue = !!selected || !!searchTerm;
 
-  // Мемоизация отфильтрованных данных и флага hasMoreResults
+  // Мемоизация отфильтрованных данных и флаг hasMoreResults
   const {memoizedFilteredData, hasMoreResults} = useMemo( () => {
     const slicedData = filteredData.slice( 0, 3 ); // Убедимся, что ограничение применяется
     const hasMoreResults = filteredData.length > 3; // Проверяем, есть ли дополнительные результаты
