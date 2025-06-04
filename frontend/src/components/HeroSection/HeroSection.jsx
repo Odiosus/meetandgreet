@@ -1,6 +1,7 @@
 import styles from './HeroSection.module.scss';
 import AccentHeading from "../AccentHeading/AccentHeading.jsx";
 import AirportSearch from "../AirportSearch/AirportSearch.jsx";
+import SearchSection from "../SearchSection/SearchSection.jsx";
 
 export default function HeroSection () {
   return (
@@ -12,7 +13,8 @@ export default function HeroSection () {
           accentWords={['AROUND']}>
           AT ALL AIRPORTS AROUND THE WORLD
         </AccentHeading>
-        <AirportSearch />
+        <AirportSearch/>
+        <SearchSection/>
       </div>
     </section>
   );
