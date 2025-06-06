@@ -1,11 +1,11 @@
 import styles from './ServiceCards.module.scss';
-import meetAssistImage from '../../assets/images/bg-card/meet-assist.png';
-import fastTrackImage from '../../assets/images/bg-card/fast-track.png';
-import vipLoungeImage from '../../assets/images/bg-card/vip-lounge.png';
-import transferImage from '../../assets/images/bg-card/transfer.png';
-import officialsImage from '../../assets/images/bg-card/officials.png';
-import cipImage from '../../assets/images/bg-card/cip.png';
-import Button from "../Buttons/Button.jsx";
+import meetAssistImage from '../../../assets/images/bg-card/meet-assist.png';
+import fastTrackImage from '../../../assets/images/bg-card/fast-track.png';
+import vipLoungeImage from '../../../assets/images/bg-card/vip-lounge.png';
+import transferImage from '../../../assets/images/bg-card/transfer.png';
+import officialsImage from '../../../assets/images/bg-card/officials.png';
+import cipImage from '../../../assets/images/bg-card/cip.png';
+import Button from "../../../components/Buttons/Button.jsx";
 
 const services = [
   {

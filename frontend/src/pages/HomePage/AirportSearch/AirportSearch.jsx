@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import SearchField from './SearchField.jsx';
 import styles from './AirportSearch.module.scss';
-import { airports } from '../../data/airports';
-import { useAirportSearch } from '../../hooks/useAirportSearch';
-import Button from '../Buttons/Button.jsx';
+import { airports } from '../../../data/airports.js';
+import { useAirportSearch } from '../../../hooks/useAirportSearch.js';
+import Button from '../../../components/Buttons/Button.jsx';
 
 /**
  * Компонент AirportSearch - это форма поиска аэропортов
